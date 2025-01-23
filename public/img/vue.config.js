@@ -1,5 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   publicPath: '/kcs',
-  transpileDependencies: true
+  transpileDependencies: true,
+  devServer: {
+    proxy: null,
+  }
 })

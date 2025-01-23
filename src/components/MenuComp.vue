@@ -1,5 +1,25 @@
 <script setup>
+document.addEventListener('DOMContentLoaded', () => {
+    let lastScrollY = window.scrollY; // Initial scroll position
+    const menu = document.querySelector('.menu');
 
+    if (menu) { // Check if menu exists
+        menu.classList.add('visible');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < lastScrollY) {
+                // Scrolling up
+                menu.classList.add('visible');
+            } else {
+                // Scrolling down
+                menu.classList.remove('visible');
+            }
+            lastScrollY = window.scrollY; // Update the last scroll position
+        });
+    } else {
+        console.error("Menu element not found");
+    }
+});
 </script>
 <template>
     <div class="menu">
@@ -28,8 +48,7 @@
     background-color: #000;
     color: #fff;
     position: fixed;
-    /* top: -100px; */
-    top: 0px;
+    top: -100px; 
     width: 100%;
     transition: top 0.4s ease;
     box-sizing: border-box;
