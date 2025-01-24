@@ -6,22 +6,14 @@ export default defineComponent({
     return {
       lastScrollTop: 0,
       menuVisible: true,
-      scrollListeners: [] as Array<() => void>, // To store listeners for cleanup
+      scrollListeners: [] as Array<() => void>,
     };
   },
   methods: {
-    scrollToSection(sectionId: string) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        console.warn(`Section with ID "${sectionId}" not found.`);
-      }
-    },
     handleScroll() {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      this.menuVisible = currentScrollTop <= this.lastScrollTop; // Toggle based on scroll direction
-      this.lastScrollTop = Math.max(currentScrollTop, 0); // Prevent negative scrolling
+      this.menuVisible = currentScrollTop <= this.lastScrollTop;
+      this.lastScrollTop = Math.max(currentScrollTop, 0);
     },
     setupSmoothScrolling() {
       const links = document.querySelectorAll<HTMLAnchorElement>('nav ul li a');
@@ -29,19 +21,6 @@ export default defineComponent({
         console.warn('No navigation links found for smooth scrolling.');
         return;
       }
-
-      links.forEach((link) => {
-        const onClick = (e: Event) => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href')?.substring(1); // Remove '#' from href
-          if (targetId) {
-            this.scrollToSection(targetId);
-          }
-        };
-
-        link.addEventListener('click', onClick);
-        this.scrollListeners.push(() => link.removeEventListener('click', onClick)); // Store for cleanup
-      });
     }
   },
   mounted() {
@@ -50,7 +29,6 @@ export default defineComponent({
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-
     this.scrollListeners.forEach((cleanup) => cleanup());
   },
 });
@@ -63,8 +41,8 @@ export default defineComponent({
       <ul>
         <li><router-link class="menu-item" to="/">Home</router-link></li>
         <li><router-link class="menu-item" to="/about">About</router-link></li>
-        <li><a class="menu-item" @click="scrollToSection('services-section')">Services</a></li>
-        <li><ruter-link class="menu-item" to="/portfolio">Portfolio</ruter-link></li>
+        <li><router-link class="menu-item" to="/services">Services</router-link></li>
+        <li><router-link class="menu-item" to="/portfolio">Portfolio</router-link></li>
       </ul>
     </nav>
     <div>

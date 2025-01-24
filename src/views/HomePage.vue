@@ -10,7 +10,7 @@
                             </div>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="https://www.instagram.com/thiskatrina/" class="button">
+                        <a href="https://www.instagram.com/katrinarosales.dev/" class="button">
                             <div class="icon">
                                 <i class="fa fa-instagram"></i>
                             </div>
