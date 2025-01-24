@@ -1,41 +1,4 @@
-<script setup>
-import FooterComp from '@/components/FooterComp.vue';
-import MenuComp from '../components/MenuComp.vue'
-
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        targetElement.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const servicesSection = document.getElementById('services-section');
-    const serviceCard = document.querySelector('.service-card');
-    const serviceInfo = document.querySelector('.services-info');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                servicesSection.classList.add('visible');
-                serviceCard.classList.add('visible');
-                serviceInfo.classList.add('visible');
-                observer.unobserve(entry.target); // Stop observing after visible
-            }
-        });
-    });
-
-    observer.observe(servicesSection); // Start observing the section
-});
-</script>
-
 <template>
-    <MenuComp />
-
     <section id="home-header">
             <div class="slogan-container">
                 <div class="slogan-text">
@@ -101,9 +64,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>
         </section>
-
-    <FooterComp />
 </template>
+
+<script setup>
+
+</script>
 
 <style>
 #home-header {
@@ -211,15 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
     box-sizing: border-box;
     line-height: 30px;
     transition: all 0.3s ease-out;
-}
-
-#services-section {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-#services-section.visible {
-    opacity: 1;
 }
 
 .services-container {

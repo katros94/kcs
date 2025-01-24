@@ -1,14 +1,22 @@
 <template>
-  <HomePage/>
+  <MenuComp />
+  <router-view></router-view>
+  <FooterComp />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import MenuComp from './components/MenuComp.vue';
+import FooterComp from './components/FooterComp.vue';
 import HomePage from './views/HomePage.vue';
+import AboutPage from './views/AboutPage.vue';
 
 @Options({
   components: {
     HomePage,
+    AboutPage,
+    MenuComp,
+    FooterComp
   },
 })
 export default class App extends Vue {}
