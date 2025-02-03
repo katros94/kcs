@@ -37,7 +37,7 @@
           </p>
         </div>
         <div class="about-image">
-          <img src="<%= BASE_URL %>/img/images/profileImg.jpg" alt="Katrina Rosales" />
+          <img :src="profileImage" alt="Katrina Rosales" />
         </div>
       </div>
     </div>
@@ -49,6 +49,11 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'AboutMe',
+  data() {
+    return {
+      profileImage: process.env.BASE_URL + 'img/images/profileImg.jpg'
+    };
+  }
 });
 </script>
 
