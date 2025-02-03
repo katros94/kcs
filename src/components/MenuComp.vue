@@ -1,13 +1,18 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import MessageComp from './MessageComp.vue';
 
 export default defineComponent({
   data() {
     return {
+      showModal: ref(false),
       lastScrollTop: 0,
       menuVisible: true,
       scrollListeners: [] as Array<() => void>,
     };
+  },
+  components: {
+    MessageComp
   },
   methods: {
     handleScroll() {
@@ -46,9 +51,13 @@ export default defineComponent({
       </ul>
     </nav>
     <div>
-      <button class="contact-btn">Contact</button>
+      <button class="contact-btn" @click="showModal = true">Contact</button>
     </div>
   </div>
+
+  <Teleport to="body">
+      <MessageComp :show="showModal" @close="showModal = false"/>
+  </Teleport>
 </template>
 
 <style>

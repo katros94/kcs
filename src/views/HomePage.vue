@@ -59,15 +59,21 @@
                     <div class="text-info">
                         <p>Transform your ideas into stunning, functional websites that achieve measurable results. From concept to completion, I deliver customized solutions that align with your goals.</p>
                         <p>Contact me for exceptional service that brings your ideas to life and takes your online presence to the next level.</p>
-                        <button class="contact-btn">Schedule a meeting with me</button>
+                        <button class="contact-btn" @click="showModal = true">Schedule a meeting with me</button>
                     </div>
                 </div>
             </div>
         </section>
+
+        <Teleport to="body">
+            <MessageComp :show="showModal" @close="showModal = false"/>
+        </Teleport>
 </template>
-
 <script setup>
+import MessageComp from '../components/MessageComp.vue'
+import { ref } from 'vue'
 
+const showModal = ref(false);
 </script>
 
 <style>
@@ -76,17 +82,26 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
+}
+
+.slogan-image {
+    flex: 1;
+    background-image: url('/public/img/images/13.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; 
     justify-content: space-between;
+    align-items: center;
+    height: 600px;
 }
 
 .slogan-container {
     display: flex;
     align-items: center;
-    justify-content: end;
-    width: 100%;
+    justify-content: flex-end;
+    width: calc(100% - 35%);
     height: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
 }
 
 .slogan-text {
@@ -128,16 +143,6 @@
     outline: none;
     background-color: #fffa76;
     color: #000;
-}
-.slogan-image {
-    flex: 1;
-    background-image: url('/public/img/images/13.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; 
-    justify-content: space-evenly;
-    align-items: center;
-    height: 700px;
 }
 
 .header-social {
@@ -182,8 +187,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 5%;
-    padding-right: 5%;
+    margin-left: 13%;
+    margin-right: 13%;
 }
 
 .services-overview {
@@ -218,7 +223,7 @@
     text-align: start;
     font-size: 20px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 

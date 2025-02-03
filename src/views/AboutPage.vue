@@ -1,4 +1,20 @@
 <template>
+  <div id="app">
+    <MessageComponent 
+      message="This is a success message!" 
+      type="success" 
+      :closable="true" 
+    />
+    <MessageComponent 
+      message="This is an error message!" 
+      type="error" 
+      :closable="true" 
+    />
+    <MessageComponent 
+      message="This is an info message!" 
+      type="info" 
+    />
+  </div>
   <section id="about" class="about-me-section">
     <div class="container">
       <div class="about-content">

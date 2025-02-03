@@ -10,16 +10,19 @@ import MenuComp from './components/MenuComp.vue';
 import FooterComp from './components/FooterComp.vue';
 import HomePage from './views/HomePage.vue';
 import AboutPage from './views/AboutPage.vue';
+import MessageComp from './components/MessageComp.vue';
 
 @Options({
   components: {
     HomePage,
     AboutPage,
     MenuComp,
-    FooterComp
+    FooterComp,
+    MessageComp
   },
 })
 export default class App extends Vue {}
+
 </script>
 
 <style lang="scss">
