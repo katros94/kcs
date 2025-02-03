@@ -37,7 +37,7 @@
           </p>
         </div>
         <div class="about-image">
-          <img src="/img/images/profile.jpg" alt="Katrina Rosales" />
+          <img src="/img/images/profileImg.jpg" alt="Katrina Rosales" />
         </div>
       </div>
     </div>
