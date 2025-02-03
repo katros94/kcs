@@ -37,7 +37,7 @@
           </p>
         </div>
         <div class="about-image">
-          <img src="/img/images/profileImg.jpg" alt="Katrina Rosales" />
+          <img src="<%= BASE_URL %>/img/images/profileImg.jpg" alt="Katrina Rosales" />
         </div>
       </div>
     </div>
