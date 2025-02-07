@@ -72,10 +72,12 @@
           </div>
           <div class="modal-footer">
             <slot name="footer">
+              <button class="modal-default-button" @click="closeModal">Cancel</button>
+
               <button
                 class="modal-default-button"
                 type="submit"
-              >OK</button>
+              >Send</button>
             </slot>
           </div>
         </div>
@@ -297,8 +299,11 @@ export default {
 
 .modal-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
 }
+
 
 .modal-default-button {
   padding: 10px 20px;
