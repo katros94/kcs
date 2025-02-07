@@ -135,44 +135,37 @@ export default {
         return;
       }
 
-      // const formData = {
-      //   firstname: this.firstname,
-      //   lastname: this.lastname,
-      //   email: this.email,
-      //   phoneNumber: this.phoneNumber,
-      //   message: this.message,
-      // };
+      const formData = {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        message: this.message,
+      };
 
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      this.resetForm();
-      this.loading = false;
-      this.closeModal()
-      toast("Your message has been sent successfully!", {
-        autoClose: 3000,
-        position: toast.POSITION.BOTTOM_RIGHT,
+      await fetch('https://formspree.io/f/xbldkjyw', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+      })
+      .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+        this.resetForm();
+        this.closeModal()
+        toast.success("Your message has been sent successfully!", {
+          autoClose: 5000,
+          position: toast.POSITION.TOP_LEFT,
+        });
+      })
+      .catch(error => {
+        this.errors.submit = "There was a problem sending your message: " + error.message;
       });
-
-      // fetch('https://example.com/api/contact', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify(formData),
-      // })
-      // .then(response => {
-      //     if (!response.ok) {
-      //       throw new Error('Network response was not ok');
-      //     }
-      //     return response.json();
-      // })
-      // .then(data => {
-      //   this.resetForm();
-      //   alert("Your message has been sent successfully!");
-      // })
-      // .catch(error => {
-      //   this.errors.submit = "There was a problem sending your message: " + error.message;
-      // });
     },
     clearError(field) {
       if (this.errors[field]) {
