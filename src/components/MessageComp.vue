@@ -57,6 +57,19 @@
                   <p v-if="errors.email" class="error-message">{{ errors.email }}</p>
               </div>
               <div class="form-group">
+                  <label for="subject" class="contactform-label">Subject</label>
+                  <input 
+                      id="subject" 
+                      v-model="subject" 
+                      class="form-input" 
+                      type="text" 
+                      placeholder="Subject" 
+                      required
+                      @input="clearError('subject')"
+                  />
+                  <p v-if="errors.subject" class="error-message">{{ errors.subject }}</p>
+              </div>
+              <div class="form-group">
                   <label for="message" class="contactform-label">Message</label>
                   <textarea 
                       id="message" 
@@ -103,7 +116,7 @@ export default {
         firstname: '',
         lastname: '',
         email: '',
-        phoneNumber: '',
+        subject: '',
         message: '',
         errors: {},
         loading: false,
@@ -129,6 +142,9 @@ export default {
             this.errors.email = "Please enter a valid email address.";
           }
       }
+      if (!this.subject || this.subject.length < 5) {
+        this.errors.subject = "Subject must be at least 5 characters long.";
+      }
       if (!this.message || this.message.length < 10) {
         this.errors.message = "Message must be at least 10 characters long.";
       }
@@ -141,6 +157,7 @@ export default {
         firstname: this.firstname,
         lastname: this.lastname,
         email: this.email,
+        subject: this.subject,
         message: this.message,
       };
 
@@ -182,7 +199,7 @@ export default {
       this.firstname = '';
       this.lastname = '';
       this.email = '';
-      this.phoneNumber = '';
+      this.subject = '';
       this.message = '';
       this.errors = {};
     }

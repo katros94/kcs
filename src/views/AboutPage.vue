@@ -1,20 +1,4 @@
 <template>
-  <div id="app">
-    <MessageComponent 
-      message="This is a success message!" 
-      type="success" 
-      :closable="true" 
-    />
-    <MessageComponent 
-      message="This is an error message!" 
-      type="error" 
-      :closable="true" 
-    />
-    <MessageComponent 
-      message="This is an info message!" 
-      type="info" 
-    />
-  </div>
   <section id="about" class="about-me-section">
     <div class="container">
       <div class="about-content">
@@ -26,12 +10,6 @@
           <p>
             I’m committed to turning innovative ideas into functional, modern solutions that provide real value to businesses. My approach is methodical, focused, and collaborative—ensuring that every project delivers a superior user experience.
           </p>
-          <ul class="skills-list">
-            <li><strong>Technical Mastery:</strong> .NET Core, REST APIs, ReactJS, Angular, VueJS, TypeScript, SQL databases.</li>
-            <li><strong>UX/UI Expertise:</strong> Adobe XD, Figma, and creating intuitive user-friendly designs.</li>
-            <li><strong>Agile Collaboration:</strong> Thrives in teamwork and continuous learning environments.</li>
-            <li><strong>DevOps & Accessibility:</strong> Skilled in Azure DevOps, Docker, and WCAG 2.0 compliance.</li>
-          </ul>
           <p>
             Let’s create something innovative together! I’m always excited to work with clients who value quality and cutting-edge technology.
           </p>
