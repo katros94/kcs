@@ -124,10 +124,10 @@ export default {
       };
   },
   methods: {
-      async handleSubmit() {
+    async handleSubmit() {
       this.errors = {};
       this.loading = true;
-
+      
       if (!this.firstname || this.firstname.length < 2) {
       this.errors.firstname = "First Name must be at least 2 characters long.";
       }
@@ -232,7 +232,6 @@ export default {
 
 .modal-mask {
   position: fixed;
-  z-index: 9998;
   top: 0;
   left: 0;
   width: 100%;
@@ -360,5 +359,11 @@ export default {
 .modal-enter-from .modal-container,
 .modal-leave-to .modal-container {
   transform: scale(0.9);
+}
+
+@media (max-width: 600px) {
+  .modal-container {
+    width: 95%;
+  }
 }
 </style>

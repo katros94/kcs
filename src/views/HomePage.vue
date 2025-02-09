@@ -185,6 +185,7 @@ const showModal = ref(false);
 
 .services-container {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-left: 13%;
@@ -248,4 +249,40 @@ const showModal = ref(false);
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 600px) {
+    .services-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .services-info h1 {
+        font-size: 40px;
+        border-right: none;
+        margin-right: 0;
+    }
+
+    .text-info {
+        margin-left: 0;
+    }
+
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .service-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .slogan-image {
+        height: 300px;
+        background-size: cover;
+    }
+}
+
 </style>
