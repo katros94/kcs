@@ -5,92 +5,84 @@
         <div class="modal-container">
           <div class="modal-header">
             <slot name="header">
-                <h3>Let's Build Something Great</h3>
-                <p class="modal-description">
-                  Thanks for visiting! I’m a dedicated solo developer ready to bring your ideas to life. 
-                  If you have a project in mind, fill out the form below, and I’ll get back to you soon. 
-                  Let’s make something great together!
-                </p>
+              <h3>{{ t('lets_build_something_great') }}</h3>
+              <p class="modal-description">{{ t('modal_description') }}</p>
             </slot>
           </div>
           <div class="modal-body">
-              <slot name="body">
-                <div class="flex-container">
-                  <div class="flex-item">
-                      <label for="firstname" class="contactform-label">First name</label>
-                      <input 
-                          id="firstname" 
-                          v-model="firstname" 
-                          class="form-input" 
-                          type="text" 
-                          placeholder="Enter your first name" 
-                          required 
-                          @input="clearError('firstname')"
-                      />
-                      <p v-if="errors.firstname" class="error-message">{{ errors.firstname }}</p>
-                  </div>
-                  <div class="flex-item">
-                      <label for="lastname" class="contactform-label">Last name</label>
-                      <input 
-                          id="lastname" 
-                          v-model="lastname" 
-                          class="form-input" 
-                          type="text" 
-                          placeholder="Enter your last name" 
-                          required
-                          @input="clearError('lastname')"
-                      />
-                      <p v-if="errors.lastname" class="error-message">{{ errors.lastname }}</p>
-                  </div>
-              </div>
-              <div class="form-group">
-                  <label for="email" class="contactform-label">Email</label>
-                  <input 
-                      id="email" 
-                      v-model="email" 
-                      class="form-input" 
-                      type="email" 
-                      placeholder="Email adress" 
-                      required
-                      @input="clearError('email')"
+            <slot name="body">
+              <div class="flex-container">
+                <div class="flex-item">
+                  <label for="firstname" class="contactform-label">{{ t('firstname') }}</label>
+                  <input
+                    id="firstname"
+                    v-model="firstname"
+                    class="form-input"
+                    type="text"
+                    :placeholder="t('placeholder_firstname')"
+                    required
+                    @input="clearError('firstname')"
                   />
-                  <p v-if="errors.email" class="error-message">{{ errors.email }}</p>
-              </div>
-              <div class="form-group">
-                  <label for="subject" class="contactform-label">Subject</label>
-                  <input 
-                      id="subject" 
-                      v-model="subject" 
-                      class="form-input" 
-                      type="text" 
-                      placeholder="Subject" 
-                      required
-                      @input="clearError('subject')"
+                  <p v-if="errors.firstname" class="error-message">{{ errors.firstname }}</p>
+                </div>
+                <div class="flex-item">
+                  <label for="lastname" class="contactform-label">{{ t('lastname') }}</label>
+                  <input
+                    id="lastname"
+                    v-model="lastname"
+                    class="form-input"
+                    type="text"
+                    :placeholder="t('placeholder_lastname')"
+                    required
+                    @input="clearError('lastname')"
                   />
-                  <p v-if="errors.subject" class="error-message">{{ errors.subject }}</p>
+                  <p v-if="errors.lastname" class="error-message">{{ errors.lastname }}</p>
+                </div>
               </div>
               <div class="form-group">
-                  <label for="message" class="contactform-label">Message</label>
-                  <textarea 
-                      id="message" 
-                      v-model="message" 
-                      class="form-textarea" 
-                      placeholder="Write your message" 
-                      required
-                      @input="clearError('message')"
-                  ></textarea>
-                  <p v-if="errors.message" class="error-message">{{ errors.message }}</p>
+                <label for="email" class="contactform-label">{{ t('email') }}</label>
+                <input
+                  id="email"
+                  v-model="email"
+                  class="form-input"
+                  type="email"
+                  :placeholder="t('placeholder_email')"
+                  required
+                  @input="clearError('email')"
+                />
+                <p v-if="errors.email" class="error-message">{{ errors.email }}</p>
+              </div>
+              <div class="form-group">
+                <label for="subject" class="contactform-label">{{ t('subject') }}</label>
+                <input
+                  id="subject"
+                  v-model="subject"
+                  class="form-input"
+                  type="text"
+                  :placeholder="t('placeholder_subject')"
+                  required
+                  @input="clearError('subject')"
+                />
+                <p v-if="errors.subject" class="error-message">{{ errors.subject }}</p>
+              </div>
+              <div class="form-group">
+                <label for="message" class="contactform-label">{{ t('message') }}</label>
+                <textarea
+                  id="message"
+                  v-model="message"
+                  class="form-textarea"
+                  :placeholder="t('placeholder_message')"
+                  required
+                  @input="clearError('message')"
+                ></textarea>
+                <p v-if="errors.message" class="error-message">{{ errors.message }}</p>
               </div>
             </slot>
           </div>
           <div class="modal-footer">
             <slot name="footer">
-              <button class="modal-default-button" @click="closeModal">Cancel</button>
-
-              <button
-                class="modal-default-button"
-                type="submit"
-              >Send</button>
+              <button class="modal-default-button" @click="closeModal">{{ t('cancel') }}</button>
+              <button class="modal-default-button" type="submit">{{ t('send') }}</button>
             </slot>
           </div>
         </div>
@@ -102,54 +94,60 @@
 <script>
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { useI18n } from 'vue-i18n';
 
 export default {
   props: {
     show: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
-  emits: ['submit', 'update:show', close],
+  emits: ['submit', 'update:show', 'close'], // Add 'close' to emits
+  setup() {
+    const { t } = useI18n();
+    return { t };
+  },
   data() {
-      return {
-        firstname: '',
-        lastname: '',
-        email: '',
-        subject: '',
-        message: '',
-        errors: {},
-        loading: false,
-        successMessage: ''
-      };
+    return {
+      firstname: '',
+      lastname: '',
+      email: '',
+      subject: '',
+      message: '',
+      errors: {},
+      loading: false,
+      successMessage: '',
+    };
   },
   methods: {
     async handleSubmit() {
       this.errors = {};
       this.loading = true;
-      
+
       if (!this.firstname || this.firstname.length < 2) {
-      this.errors.firstname = "First Name must be at least 2 characters long.";
+        this.errors.firstname = this.t('error_firstname');
       }
       if (!this.lastname || this.lastname.length < 2) {
-        this.errors.lastname = "Last Name must be at least 2 characters long.";
+        this.errors.lastname = this.t('error_lastname');
       }
       if (!this.email) {
-        this.errors.email = "Email is required.";
+        this.errors.email = this.t('error_email_required');
       } else {
-          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailPattern.test(this.email)) {
-            this.errors.email = "Please enter a valid email address.";
-          }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(this.email)) {
+          this.errors.email = this.t('error_email_invalid');
+        }
       }
       if (!this.subject || this.subject.length < 5) {
-        this.errors.subject = "Subject must be at least 5 characters long.";
+        this.errors.subject = this.t('error_subject');
       }
       if (!this.message || this.message.length < 10) {
-        this.errors.message = "Message must be at least 10 characters long.";
+        this.errors.message = this.t('error_message');
       }
 
       if (Object.keys(this.errors).length > 0) {
+        this.loading = false;
         return;
       }
 
@@ -161,30 +159,30 @@ export default {
         message: this.message,
       };
 
-      await fetch('https://formspree.io/f/xbldkjyw', {
+      try {
+        const response = await fetch('https://formspree.io/f/xbldkjyw', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formData),
-      })
-      .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-      })
-      .then(data => {
+        });
+
+        if (!response.ok) {
+          throw new Error(this.t('error_network'));
+        }
+
         this.resetForm();
-        this.closeModal()
-        toast.success("Your message has been sent successfully!", {
+        this.closeModal();
+        toast.success(this.t('success_message_sent'), {
           autoClose: 5000,
           position: toast.POSITION.TOP_LEFT,
         });
-      })
-      .catch(error => {
-        this.errors.submit = "There was a problem sending your message: " + error.message;
-      });
+      } catch (error) {
+        this.errors.submit = this.t('error_submit') + error.message;
+      } finally {
+        this.loading = false;
+      }
     },
     clearError(field) {
       if (this.errors[field]) {
@@ -202,9 +200,9 @@ export default {
       this.subject = '';
       this.message = '';
       this.errors = {};
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

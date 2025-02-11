@@ -1,79 +1,121 @@
 <template>
+    <MenuComp />
     <section id="home-header">
-            <div class="slogan-container">
-                <div class="slogan-text">
-                    <h1><span style="color: #38b6ff;">&lt;p&gt;</span>Turning <b>visions</b> into virtual <b>reality</b><span style="color: #38b6ff;">&lt;/p&gt;</span></h1>
-                    <div class="header-social">
-                        <a href="https://www.linkedin.com/in/katrina-rosales-3baa00bb/" class="button">
-                            <div class="icon">
-                                <i class="fa fa-linkedin"></i>
-                            </div>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://www.instagram.com/katrinarosales.dev/" class="button">
-                            <div class="icon">
-                                <i class="fa fa-instagram"></i>
-                            </div>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://www.youtube.com/@Cutiiepaii" class="button">
-                            <div class="icon">
-                                <li class="fa fa-youtube"></li>
-                            </div>
-                            <span>Youtube</span>
-                        </a>
-                        <a href="https://www.facebook.com/groups/118348288371722/" class="button">
-                            <div class="icon">
-                                <li class="fa fa-facebook"></li>
-                            </div>
-                            <span>Facebook</span>
-                        </a>
-                    </div>
+        <div class="slogan-container">
+            <div class="slogan-text">
+                <h1>
+                    <span class="highlight">&lt;p&gt;</span>
+                    {{ t('turning') }} <b>{{ t('visions') }}</b> {{ t('into_virtual') }} <b>{{ t('reality') }}</b>
+                    <span class="highlight">&lt;/p&gt;</span>
+                </h1>
+                <div class="header-social">
+                    <a href="https://www.linkedin.com/in/katrina-rosales-3baa00bb/" class="button">
+                        <div class="icon">
+                            <i class="fa fa-linkedin"></i>
+                        </div>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/katrinarosales.dev/" class="button">
+                        <div class="icon">
+                            <i class="fa fa-instagram"></i>
+                        </div>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.youtube.com/@Cutiiepaii" class="button">
+                        <div class="icon">
+                            <i class="fa fa-youtube"></i>
+                        </div>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://www.facebook.com/groups/118348288371722/" class="button">
+                        <div class="icon">
+                            <i class="fa fa-facebook"></i>
+                        </div>
+                        <span>Facebook</span>
+                    </a>
                 </div>
-                <div class="slogan-image"></div>
             </div>
-        </section>
+            <div>
+                <img :src="headerImg" class="slogan-image" alt="Header image" />
+            </div>
+        </div>
+    </section>
 
-        <section id="services-section">
-            <div class="services-overview">
-                <div class="service-card">
-                    <h2>Professional<br>Web Development</h2>
-                    <p>Create fast, responsive, and user-friendly websites using cutting-edge technologies to elevate your online presence.</p>
-                </div>
-                <div class="service-card">
-                    <h2>Custom<br>E-commerce Solutions</h2>
-                    <p>Build scalable online stores with seamless payment integrations and advanced features to boost your sales and customer engagement.</p>
-                </div>
-                <div class="service-card">
-                    <h2>Innovative<br>UI/UX Design</h2>
-                    <p>Deliver exceptional user experiences with visually stunning designs crafted using Figma, Adobe XD, and intuitive prototyping tools.</p>
-                </div>
-                <div class="service-card">
-                    <h2>Reliable<br>Website Maintenance</h2>
-                    <p>Keep your website secure, up-to-date, and optimized for peak performance with our dedicated maintenance and support services.</p>
-                </div>                
+    <section id="services-section">
+        <div class="services-overview">
+            <div class="service-card" v-for="(service, index) in services" :key="index">
+                <h2>{{ service.title }}</h2>
+                <p>{{ service.description }}</p>
             </div>
-            <div class="services-container">
-                <div class="services-info">
-                    <h1>Customized Web Solutions</h1>
-                    <div class="text-info">
-                        <p>Transform your ideas into stunning, functional websites that achieve measurable results. From concept to completion, I deliver customized solutions that align with your goals.</p>
-                        <p>Contact me for exceptional service that brings your ideas to life and takes your online presence to the next level.</p>
-                        <button class="contact-btn" @click="showModal = true">Schedule a meeting with me</button>
-                    </div>
+        </div>
+        <div class="services-container">
+            <div class="services-info">
+                <h1>{{ t('customized_web_solutions') }}</h1>
+                <div class="text-info">
+                    <p>{{ t('customized_web_solutions_service1') }}</p>
+                    <p>{{ t('customized_web_solutions_service2') }}</p>
+                    <button class="contact-btn" @click="showModal = true">{{ t('schedule_a_meeting_with_me') }}</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <Teleport to="body">
-            <MessageComp :show="showModal" @close="showModal = false"/>
-        </Teleport>
+    <Teleport to="body">
+        <MessageComp :show="showModal" @close="showModal = false" />
+    </Teleport>
 </template>
-<script setup>
-import MessageComp from '../components/MessageComp.vue'
-import { ref } from 'vue'
 
-const showModal = ref(false);
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+import MessageComp from '../components/MessageComp.vue';
+import MenuComp from '@/components/MenuComp.vue';
+import { useI18n } from 'vue-i18n';
+
+export default defineComponent({
+    name: 'AboutMe',
+    components: {
+        MessageComp,
+        MenuComp
+    },
+    setup() {
+        const { t, locale } = useI18n();
+        const showModal = ref(false);
+        const headerImg = process.env.BASE_URL + 'img/images/13.png';
+        
+        const changeLanguage = (lang: string) => {
+            locale.value = lang;
+        };
+
+        return {
+            t,
+            showModal,
+            headerImg,
+            changeLanguage
+        };
+    },
+    data() {
+        const services = [
+            {
+                title: this.t('professional') + ' ' + this.t('web_development'),
+                description: this.t('web_information_service'),
+            },
+            {
+                title: this.t('custom') + ' ' + this.t('ecommerce_solutions'),
+                description: this.t('ecommerce_service'),
+            },
+            {
+                title: this.t('innovative') + ' ' + this.t('ui/ux_design'),
+                description: this.t('design_service'),
+            },
+            {
+                title: this.t('reliable') + ' ' + this.t('website_maintenance'),
+                description: this.t('website_maintenance_service'),
+            },
+        ];
+
+        return {services}
+    }
+});
 </script>
 
 <style>
@@ -85,19 +127,18 @@ const showModal = ref(false);
     justify-content: space-around;
 }
 
+.highlight {
+    color: rgb(90, 90, 255);
+    font-weight: bold;
+}
+
 .slogan-image {
-    flex: 1;
-    background-image: url('/public/img/images/13.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; 
-    justify-content: space-between;
-    align-items: center;
     height: 600px;
 }
 
 .slogan-container {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     width: calc(100% - 35%);
@@ -115,47 +156,17 @@ const showModal = ref(false);
     font-weight: normal;
 }
 
-.slogan-text .hire-btn {
-    background-color: #38b6ff;
-    color: #fff;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.6s ease, transform 0.5s ease;
-}
-
-.slogan-text .hire-btn:hover {
-    background-color: #fffa76;
-    color:#000;
-    transform: scale(1.05);
-}
-
-.slogan-text .hire-btn:active {
-    background-color: #fffa76;
-    transform: scale(0.95);
-}
-
-.slogan-text .hire-btn:focus {
-    outline: none;
-    background-color: #fffa76;
-    color: #000;
-}
-
 .header-social {
     display: flex;
     flex-direction:row;
     align-items: flex-start;
+    margin-top: 5%;
 }
 
 .header-social .button {
     display: inline-block;
     height: 30px;
     width: 30px;
-    float: left;
     text-decoration: none;
     margin: 0 5px;
     overflow: hidden;
@@ -251,6 +262,28 @@ const showModal = ref(false);
 }
 
 @media (max-width: 600px) {
+    .slogan-container {
+        padding: 10;
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+    }
+    .slogan-text {
+        font-size: 1em;
+    }
+    .header-social {
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    .header-social .button .icon {
+        font-size: 25px;
+        padding: 2%;
+    }
+
+    .services-overview {
+        margin: 5%;
+    }
+
     .services-info {
         flex-direction: column;
         align-items: center;

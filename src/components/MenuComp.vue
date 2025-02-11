@@ -1,52 +1,65 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue';
 import MessageComp from './MessageComp.vue';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
-  data() {
-    return {
-      showModal: ref(false),
-      lastScrollTop: 0,
-      menuVisible: true,
-      mobileMenuOpen: false,
-      isMobile: window.innerWidth < 768, // Detect initial screen size
-    };
-  },
+  name: 'MenuComp',
   components: {
     MessageComp,
   },
-  methods: {
-    handleScroll() {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      this.menuVisible = currentScrollTop <= this.lastScrollTop;
-      this.lastScrollTop = Math.max(currentScrollTop, 0);
-    },
-    toggleMobileMenu() {
-      this.mobileMenuOpen = !this.mobileMenuOpen;
-    },
-    handleResize() {
-      this.isMobile = window.innerWidth < 768;
-      if (!this.isMobile) {
-        this.mobileMenuOpen = false;
+  setup() {
+    const { locale, t } = useI18n();
+
+    const showModal = ref(false);
+    const menuVisible = ref(true);
+    const mobileMenuOpen = ref(false);
+    const isMobile = ref(window.innerWidth < 768);
+
+    const changeLanguage = (lang: string) => {
+      locale.value = lang;
+    };
+
+    const toggleMobileMenu = () => {
+      mobileMenuOpen.value = !mobileMenuOpen.value;
+    };
+
+    const handleResize = () => {
+      isMobile.value = window.innerWidth < 768;
+      if (!isMobile.value) {
+        mobileMenuOpen.value = false;
       }
-    },
-    closeMobileMenuOnLinkClick() {
-      if (this.isMobile) {
-        this.mobileMenuOpen = false;
+    };
+
+    const closeMobileMenuOnLinkClick = () => {
+      if (isMobile.value) {
+        mobileMenuOpen.value = false;
       }
-    },
-  },
-  mounted() {
-    this.handleResize();
-    window.addEventListener('resize', this.handleResize);
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-    window.removeEventListener('scroll', this.handleScroll);
+    };
+
+    onMounted(() => {
+      handleResize();
+      window.addEventListener('resize', handleResize);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', handleResize);
+    });
+
+    return {
+      showModal,
+      menuVisible,
+      mobileMenuOpen,
+      isMobile,
+      changeLanguage,
+      toggleMobileMenu,
+      handleResize,
+      closeMobileMenuOnLinkClick,
+      t,
+    };
   },
 });
 </script>
-
 
 <template>
   <div class="menu" :class="{ hidden: !menuVisible }">
@@ -56,19 +69,27 @@ export default defineComponent({
 
     <nav :class="{ open: mobileMenuOpen || !isMobile }">
       <ul>
-        <li><router-link class="menu-item" to="/">Home</router-link></li>
-        <li><router-link class="menu-item" to="/about">About</router-link></li>
-        <li><router-link class="menu-item" to="/services">Services</router-link></li>
-        <li><router-link class="menu-item" to="/portfolio">Portfolio</router-link></li>
+        <li>
+          <router-link class="menu-item" to="/" @click="closeMobileMenuOnLinkClick">{{ t('home') }}</router-link>
+        </li>
+        <li>
+          <router-link class="menu-item" to="/about" @click="closeMobileMenuOnLinkClick">{{ t('about') }}</router-link>
+        </li>
+        <li>
+          <router-link class="menu-item" to="/services" @click="closeMobileMenuOnLinkClick">{{ t('services') }}</router-link>
+        </li>
+        <li>
+          <router-link class="menu-item" to="/portfolio" @click="closeMobileMenuOnLinkClick">{{ t('portfolio') }}</router-link>
+        </li>
       </ul>
     </nav>
     <div>
-      <button class="contact-btn" @click="showModal = true">Contact</button>
+      <button class="contact-btn" @click="showModal = true">{{ t('contact') }}</button>
     </div>
   </div>
 
   <Teleport to="body">
-      <MessageComp :show="showModal" @close="showModal = false"/>
+    <MessageComp :show="showModal" @close="showModal = false"/>
   </Teleport>
 </template>
 

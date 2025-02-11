@@ -3,16 +3,10 @@
     <div class="container">
       <div class="about-content">
         <div class="about-text">
-          <h2 class="section-title">About Me</h2>
-          <p>
-            Hello, I’m <span class="highlight">Katrina Rosales</span>, a passionate and experienced web developer with over six years of expertise in crafting seamless and user-focused applications. I specialize in building robust backend systems with .NET and creating dynamic frontend experiences using React and Angular.
-          </p>
-          <p>
-            I’m committed to turning innovative ideas into functional, modern solutions that provide real value to businesses. My approach is methodical, focused, and collaborative—ensuring that every project delivers a superior user experience.
-          </p>
-          <p>
-            Let’s create something innovative together! I’m always excited to work with clients who value quality and cutting-edge technology.
-          </p>
+          <h2 class="section-title">{{ $t('about_me') }}</h2>
+          <p>{{ t('about_me_information_1') }}</p>
+          <p>{{ t('about_me_information_2') }}</p>
+          <p>{{ t('about_me_information_3') }}</p>
         </div>
         <div class="about-image">
           <img :src="profileImage" alt="Katrina Rosales" />
@@ -23,15 +17,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   name: 'AboutMe',
-  data() {
+  setup() {
+    const { t } = useI18n();
+
+    const profileImage = ref(process.env.BASE_URL + 'img/images/profileImg.jpg');
+
     return {
-      profileImage: process.env.BASE_URL + 'img/images/profileImg.jpg'
+      t,
+      profileImage,
     };
-  }
+  },
 });
 </script>
 
@@ -109,27 +109,27 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Ensures that any overflow is hidden */
-  border-radius: 15px; /* Slightly larger border radius for a softer look */
-  padding: 20px; /* Add some padding around the image */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+  overflow: hidden;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .about-image img {
   max-width: 50%;
-  border-radius: 15px; /* Match the border radius of the container */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
-  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add filter transition */
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
 .about-image img:hover {
   transform: scale(1.05);
-  filter: brightness(1.1); /* Slightly brighten the image on hover */
+  filter: brightness(1.1);
 }
 
 @media (max-width: 768px) {
   .about-image {
-    padding: 10px; /* Reduce padding on smaller screens */
+    padding: 10px;
   }
   .about-content {
     flex-direction: column;

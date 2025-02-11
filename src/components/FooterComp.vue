@@ -6,11 +6,11 @@
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#privacy">Portfolio</a></li>
-                    <li><a href="#licensedContent">Licensed Content</a></li>
+                    <li><a href="#about">{{ t('about') }}</a></li>
+                    <li><a href="#services">{{ t('services') }}</a></li>
+                    <li><a href="#contact">{{ t('contact') }}</a></li>
+                    <li><a href="#portfolio">{{ t('portfolio') }}</a></li>
+                    <li><a href="#licensedContent">{{ t('licensed_content') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -19,6 +19,23 @@
         </div>
     </footer>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+
+export default defineComponent({
+        name: 'FooterComp',
+        setup() {
+        const { t } = useI18n();
+
+        return {
+            t
+        };
+    },
+})
+</script>
 
 <style>
 .footer {
@@ -51,6 +68,7 @@
 .footer-links ul {
     list-style: none;
     padding: 0;
+    display: flex;
 }
 
 .footer-links li {
