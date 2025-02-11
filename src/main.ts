@@ -28,11 +28,17 @@ async function detectUserCountry() {
 async function detectBrowserLanguage() {
   const country = await detectUserCountry();
 
-  // Kontrollera om språket börjar med 'sv' (för svenska)
+  // Kontrollera om användaren kommer från Sverige
   if (country === 'SE') {
     i18n.global.locale.value = 'sv'; // Sätt språk till svenska
   } else {
-    i18n.global.locale.value = 'en'; // Sätt språk till engelska
+    // Fallback till webbläsarens språk om geolokalisering misslyckas
+    const browserLanguage = navigator.language;
+    if (browserLanguage.startsWith('sv')) {
+      i18n.global.locale.value = 'sv'; // Sätt språk till svenska
+    } else {
+      i18n.global.locale.value = 'en'; // Sätt språk till engelska
+    }
   }
 }
 

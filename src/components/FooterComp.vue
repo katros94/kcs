@@ -93,4 +93,10 @@ export default defineComponent({
     margin-top: 20px;
     font-size: 14px;
 }
+
+@media (max-width: 600px) {
+    .footer-links ul li{
+        margin: 1%;
+    }
+}
 </style>

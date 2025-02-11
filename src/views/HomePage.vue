@@ -80,40 +80,38 @@ export default defineComponent({
     setup() {
         const { t, locale } = useI18n();
         const showModal = ref(false);
-        const headerImg = process.env.BASE_URL + 'img/images/13.png';
+        const headerImg = ref(process.env.BASE_URL + 'img/images/13.png');
         
         const changeLanguage = (lang: string) => {
             locale.value = lang;
         };
 
+        const services = [
+            {
+                title: t('professional') + ' ' + t('web_development'),
+                description: t('web_information_service'),
+            },
+            {
+                title: t('custom') + ' ' + t('ecommerce_solutions'),
+                description: t('ecommerce_service'),
+            },
+            {
+                title: t('innovative') + ' ' + t('ui/ux_design'),
+                description: t('design_service'),
+            },
+            {
+                title: t('reliable') + ' ' + t('website_maintenance'),
+                description: t('website_maintenance_service'),
+            },
+        ];
+
         return {
             t,
             showModal,
             headerImg,
-            changeLanguage
+            changeLanguage,
+            services
         };
-    },
-    data() {
-        const services = [
-            {
-                title: this.t('professional') + ' ' + this.t('web_development'),
-                description: this.t('web_information_service'),
-            },
-            {
-                title: this.t('custom') + ' ' + this.t('ecommerce_solutions'),
-                description: this.t('ecommerce_service'),
-            },
-            {
-                title: this.t('innovative') + ' ' + this.t('ui/ux_design'),
-                description: this.t('design_service'),
-            },
-            {
-                title: this.t('reliable') + ' ' + this.t('website_maintenance'),
-                description: this.t('website_maintenance_service'),
-            },
-        ];
-
-        return {services}
     }
 });
 </script>
@@ -271,9 +269,13 @@ export default defineComponent({
     .slogan-text {
         font-size: 1em;
     }
+    .slogan-text h1 {
+        font-size: 3em;
+        margin: 5%;
+    }
     .header-social {
-        margin-top: 10%;
-        margin-bottom: 10%;
+        margin: 5%;
+
     }
     .header-social .button .icon {
         font-size: 25px;
