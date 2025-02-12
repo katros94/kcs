@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import MessageComp from '../components/MessageComp.vue';
 import MenuComp from '@/components/MenuComp.vue';
 import { useI18n } from 'vue-i18n';
@@ -86,7 +86,7 @@ export default defineComponent({
             locale.value = lang;
         };
 
-        const services = [
+        const services = computed(() => [
             {
                 title: t('professional') + ' ' + t('web_development'),
                 description: t('web_information_service'),
@@ -103,7 +103,7 @@ export default defineComponent({
                 title: t('reliable') + ' ' + t('website_maintenance'),
                 description: t('website_maintenance_service'),
             },
-        ];
+        ]);
 
         return {
             t,
