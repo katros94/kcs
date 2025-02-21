@@ -7,21 +7,27 @@ import PortfolioPage from '@/views/PorfolioPage.vue';
 const routes = [
     {   path: '/', 
         name: 'Home', 
-        component: HomePage 
+        component: HomePage,
+        meta: { title: 'Hemsida - Professionell Webbutveckling' }
     },
     {   path: '/about', 
         name: 'About', 
-        component: AboutPage 
+        component: AboutPage,
+        meta: { title: 'Om mig - Lite kort om mig själv' }
     },
     {
         path: '/services',
         name: 'Services',
-        component: ServicePage
+        component: ServicePage,
+        meta: { title: 'Tjänst sida - Skräddarsydda E-handelslösningar, Innovativ UI/UX Design' }
+
     },
     {
         path: '/portfolio',
         name: 'Portfolio',
-        component: PortfolioPage
+        component: PortfolioPage,
+        meta: { title: 'Portfolio sida - Våra tidigare projekt' }
+
     }
 ];
 

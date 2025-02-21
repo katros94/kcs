@@ -72,7 +72,7 @@ import MenuComp from '@/components/MenuComp.vue';
 import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
-    name: 'AboutMe',
+    name: 'HomePage',
     components: {
         MessageComp,
         MenuComp

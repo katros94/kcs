@@ -6,6 +6,8 @@ import Vue3Toastify, { type ToastContainerOptions } from 'vue3-toastify';
 import { createI18n } from 'vue-i18n';
 import en from './locales/en.json';
 import sv from './locales/sv.json';
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 const i18n = createI18n({
   legacy: false, // Använd Composition API
@@ -46,6 +48,9 @@ async function detectBrowserLanguage() {
 detectBrowserLanguage();
 
 const app = createApp(App);
+
+app.use(ElementPlus)
+app.use(ElementPlus, { size: 'small', zIndex: 3000 })
 
 app.use(Vue3Toastify, {
   autoClose: 3000,

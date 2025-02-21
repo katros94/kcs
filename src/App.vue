@@ -1,7 +1,9 @@
 <template>
-  <MenuComp />
-  <router-view></router-view>
-  <FooterComp />
+  <el-config-provider :size="'small'" :z-index="3000">
+    <MenuComp />
+    <router-view></router-view>
+    <FooterComp />
+  </el-config-provider>
 </template>
 
 <script lang="ts">
@@ -11,6 +13,8 @@ import FooterComp from './components/FooterComp.vue';
 import HomePage from './views/HomePage.vue';
 import AboutPage from './views/AboutPage.vue';
 import MessageComp from './components/MessageComp.vue';
+import { ElConfigProvider } from 'element-plus';
+
 
 @Options({
   components: {
@@ -18,8 +22,15 @@ import MessageComp from './components/MessageComp.vue';
     AboutPage,
     MenuComp,
     FooterComp,
-    MessageComp
+    MessageComp,
+    ElConfigProvider
   },
+  setup() {
+    return {
+      zIndex: 3000,
+      size: 'small',
+    }
+  }
 })
 export default class App extends Vue {}
 

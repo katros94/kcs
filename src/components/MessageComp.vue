@@ -229,6 +229,7 @@ export default {
 }
 
 .modal-mask {
+  z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
@@ -360,6 +361,7 @@ export default {
 }
 
 @media (max-width: 600px) {
+
   .modal-container {
     width: 95%;
   }

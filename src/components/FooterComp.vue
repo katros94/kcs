@@ -44,8 +44,8 @@ export default defineComponent({
     padding: 40px 20px;
     text-align: center;
     border-top: 2px solid #fff;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 3.5%;
+    margin-right: 3.5%;
     margin-top: 5%;
 }
 

@@ -175,6 +175,7 @@ nav ul li {
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: block;
+    order: 3;
   }
 
   nav {
