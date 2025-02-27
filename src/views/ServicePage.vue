@@ -34,19 +34,18 @@
       </section>
 
       <section class="workflow">
-      <h2>{{ t('workflow_title') }}</h2>
-      <el-tabs v-model="activeTab" class="custom-tabs">
-        <el-tab-pane
-          v-for="(step, index) in steps"
-          :key="index"
-          :label="(index + ' ' + t(step.titleKey))"
-          :name="String(index)"
-        >
-          <p class="step-description">{{ t(step.descKey) }}</p>
-        </el-tab-pane>
-      </el-tabs>
-</section>
-
+            <h2>{{ t('workflow_title') }}</h2>
+            <el-tabs v-model="activeTab" class="custom-tabs">
+              <el-tab-pane
+                v-for="(step, index) in workflowSteps"
+                :key="index"
+                :label="t(step.titleKey)"
+                :name="String(index)"
+              >
+                <p class="step-description" v-for="(line, i) in $tm(step.descKey)" :key="i">{{ line }}</p>
+              </el-tab-pane>
+            </el-tabs>
+      </section>
 
     </main>
   </div>
@@ -54,7 +53,7 @@
 
   
   <script lang="ts">
-  import { defineComponent, ref } from 'vue';
+  import { computed, defineComponent, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
   
   export default defineComponent({
@@ -63,6 +62,17 @@
       const { t } = useI18n();
       const activeTab = ref('0'); 
       const activeNames = ref('0'); 
+
+      const workflowSteps = computed(() => [
+        { titleKey: 'steps.contact.title', descKey: 'steps.contact.description' },
+        { titleKey: 'steps.consultation.title', descKey: 'steps.consultation.description' },
+        { titleKey: 'steps.planning.title', descKey: 'steps.planning.description' },
+        { titleKey: 'steps.design.title', descKey: 'steps.design.description' },
+        { titleKey: 'steps.development.title', descKey: 'steps.development.description' },
+        { titleKey: 'steps.testing.title', descKey: 'steps.testing.description' },
+        { titleKey: 'steps.launch.title', descKey: 'steps.launch.description' },
+        { titleKey: 'steps.maintenance.title', descKey: 'steps.maintenance.description' }
+      ]);
 
   
       const serviceItems = [
@@ -96,23 +106,12 @@
         }
       ];
   
-      const steps = [
-        { titleKey: 'step_contact', descKey: 'step_contact_desc' },
-        { titleKey: 'step_consultation', descKey: 'step_consultation_desc' },
-        { titleKey: 'step_planning', descKey: 'step_planning_desc' },
-        { titleKey: 'step_design', descKey: 'step_design_desc' },
-        { titleKey: 'step_development', descKey: 'step_development_desc' },
-        { titleKey: 'step_testing', descKey: 'step_testing_desc' },
-        { titleKey: 'step_launch', descKey: 'step_launch_desc' },
-        { titleKey: 'step_maintenance', descKey: 'step_maintenance_desc' }
-      ];
-  
       return {
         t,
         activeTab,
         activeNames,
         serviceItems,
-        steps
+        workflowSteps
       };
     },
   });
@@ -137,17 +136,17 @@
 
 .el-tabs__header {
   display: flex;
-  flex-wrap: nowrap; /* Ensure tabs don't wrap onto the next line */
-  overflow-x: auto; /* Allow scrolling if tabs overflow */
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .el-tabs__nav {
   display: flex;
-  overflow-x: auto; /* Allow horizontal scroll */
+  overflow-x: auto;
 }
 
 .el-tabs__nav .el-tabs__item {
-  white-space: nowrap; /* Prevent text wrapping in the tabs */
+  white-space: nowrap;
 }
 
 .el-tabs__content {
@@ -155,7 +154,7 @@
 }
 
 .el-tab-pane {
-  min-width: 100%; /* Ensure the tab content takes the full width */
+  min-width: 100%;
   display: block;
 }
 
@@ -282,9 +281,8 @@
   border-radius: 2em;
 }
 
-/* ✅ Collapse Section */
 .el-collapse {
-  width: 95% !important;
+  width: 100% !important;
   border: none !important;
 }
 
@@ -314,7 +312,6 @@
   border-bottom: 5px solid #000 !important;
 }
 
-/* ✅ Typography */
 h1 {
   font-size: 2rem;
   color: #fff;
@@ -331,7 +328,6 @@ h1 {
   margin: auto;
 }
 
-/* 📱 Mobile-Optimized Fixes */
 @media (max-width: 768px) {
   .services {
     width: 100%;
@@ -350,7 +346,6 @@ h1 {
     font-size: 1.3rem;
   }
 
-  /* Adjust Collapsible Items */
   .el-collapse-item__header {
     font-size: 1.2em;
     padding: 0.8em;
@@ -361,12 +356,10 @@ h1 {
     font-size: 0.9em;
   }
 
-  /* Reduce Padding for Smaller Screens */
   .services-description {
     padding: 1.5em;
   }
 
-  /* Reduce Text Size */
   h1 {
     font-size: 1.8rem;
   }

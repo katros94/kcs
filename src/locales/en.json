@@ -82,22 +82,78 @@
         "⚡ Optimization for faster load times"
     ],
     "workflow_title": "Our Workflow",
-    "step_contact": "First contact",
-    "step_contact_desc": "We schedule a meeting together.",
-    "step_consultation": "Initial Consultation",
-    "step_consultation_desc": "We discuss your needs and vision.",
-    "step_planning": "Planning",
-    "step_planning_desc": "We create a detailed plan and timeline.",
-    "step_design": "Design",
-    "step_design_desc": "We design a prototype for your feedback.",
-    "step_development": "Development",
-    "step_development_desc": "We build the website based on the approved design.",
-    "step_testing": "Testing",
-    "step_testing_desc": "We thoroughly test the website.",
-    "step_launch": "Launch",
-    "step_launch_desc": "We launch the website and ensure everything works.",
-    "step_maintenance": "Maintenance",
-    "step_maintenance_desc": "We provide ongoing support and maintenance.",
+    "steps": {
+        "contact": {
+            "title": "First contact",
+            "description": [
+                "We schedule a meeting together.",
+                "In this initial step, we establish a connection and set up a discovery call to understand your requirements, goals, and expectations.",
+                "We discuss your business, target audience, and what you hope to achieve with the website."
+            ]
+        },
+        "consultation": {
+            "title": "Initial Consultation",
+            "description": [
+                "We discuss your needs and vision.",
+                "During this phase, we go in-depth about your project requirements, design preferences, and any specific features you want.",
+                "We explore your brand identity, competitors, and industry trends to ensure your website stands out."
+            ]
+        },
+        "planning": {
+            "title": "Planning",
+            "description": [
+                "We create a detailed plan and timeline.",
+                "A project roadmap is developed, including deliverables, milestones, and deadlines.",
+                "We define the site’s structure, user experience (UX) strategy, and technical specifications.",
+                "A sitemap and wireframes may be created to outline the layout and flow of the website."
+            ]
+        },
+        "design": {
+            "title": "Design",
+            "description": [
+                "We design a prototype for your feedback.",
+                "We create high-fidelity mockups or interactive prototypes to visualize the website's look and feel.",
+                "Color schemes, typography, and UI elements are carefully chosen to align with your brand.",
+                "You provide feedback, and we make revisions as needed before proceeding."
+            ]
+        },
+        "development": {
+            "title": "Development",
+            "description": [
+                "We build the website based on the approved design.",
+                "Frontend and backend development take place, turning designs into a fully functional website.",
+                "Features like animations, forms, databases, and integrations (e.g., payment gateways, APIs) are implemented.",
+                "The website is built to be mobile-friendly, fast-loading, and SEO-optimized."
+            ]
+        },
+        "testing": {
+            "title": "Testing",
+            "description": [
+                "We thoroughly test the website.",
+                "Comprehensive testing is conducted, including functionality, responsiveness, cross-browser compatibility, and security checks.",
+                "Bugs and performance issues are identified and resolved to ensure a seamless user experience.",
+                "We conduct user testing and collect feedback for final adjustments."
+            ]
+        },
+        "launch": {
+            "title": "Launch",
+            "description": [
+                "We launch the website and ensure everything works.",
+                "The website is deployed to a live server, making it accessible to users.",
+                "Final performance checks, speed optimizations, and security reinforcements are performed.",
+                "We monitor the launch closely to ensure a smooth transition."
+            ]
+        },
+        "maintenance": {
+            "title": "Maintenance",
+            "description": [
+                "We provide ongoing support and maintenance.",
+                "Regular updates, security patches, and backups are performed to keep the website running smoothly.",
+                "We offer continued support for bug fixes, content updates, and feature enhancements.",
+                "Analytics and performance reviews help optimize the site over time."
+            ]
+        }
+    },
     "why_choose_us": "Why Choose Us?",
     "what_we_offer": "What We Offer:",
     "design_principles": "Our Design Principles:",

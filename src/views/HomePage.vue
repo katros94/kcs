@@ -242,6 +242,7 @@ export default defineComponent({
     white-space: break-spaces;
     border-right: 1px solid #fff;
     margin-right: 10px;
+    text-align: left;
 }
 
 .text-info {
@@ -317,6 +318,20 @@ export default defineComponent({
     .slogan-image {
         height: 300px;
         background-size: cover;
+    }
+}
+
+@media (max-width: 844px) {
+    #home-header {
+        padding-top: 3em;
+        padding-bottom: 4em;
+    }
+    .slogan-image {
+        display: none;
+    }
+    .services-info h1{
+        font-size: 3em;
+        text-align: center;
     }
 }
 
