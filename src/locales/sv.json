@@ -49,5 +49,61 @@
     "placeholder_lastname": "Ange ditt efternamn",
     "placeholder_email": "E-postadress",
     "placeholder_subject": "Ämne",
-    "placeholder_message": "Skriv ditt meddelande"
+    "placeholder_message": "Skriv ditt meddelande",
+    "service_title": "Skapa din drömwebbplats med en erfaren utvecklare",
+    "web_dev_desc": "Vi skapar professionella, moderna och skräddarsydda webbplatser som hjälper ditt företag att växa online.",
+    "web_dev_details": [
+    "✅ Skräddarsydda lösningar för din verksamhet",
+    "✅ SEO-optimerad och snabb prestanda",
+    "✅ Mobilvänlig och lätt att underhålla"
+    ],
+    "service_intro": [
+    "Professionella webbtjänster för ditt företag?",
+    "Leter du efter en utvecklare som kan förverkliga din vision och ta din digitala närvaro till nästa nivå?",
+    "Oavsett om du behöver en helt ny webbplats, en skräddarsydd e-handelslösning eller en sömlös användarupplevelse, är jag här för att hjälpa dig."
+    ],
+    "services_we_offer":    "Här är några av de tjänster jag erbjuder:",
+    "ecommerce_desc": "Vi bygger kraftfulla och användarvänliga e-handelslösningar anpassade efter dina behov.",
+    "ecommerce_details": [
+        "🛒 Skräddarsydda webbutiker",
+        "🔒 Säkra betalningslösningar",
+        "📈 SEO-optimerad för bättre synlighet"
+    ],
+    "uiux_desc": "En snygg och användarvänlig design är avgörande för att skapa en positiv upplevelse.",
+    "uiux_details": [
+        "🎨 Attraktiv och modern design",
+        "🧭 Enkel navigering",
+        "📊 Optimerad för konverteringar"
+    ],
+    "maintenance_desc": "Att ha en hemsida är bara början – den behöver också hållas uppdaterad och säker.",
+    "maintenance_details": [
+        "🔄 Regelbundna uppdateringar",
+        "📂 Backup och återställning",
+        "⚡ Optimering för snabbare laddning"
+    ],
+    "workflow_title": "Vår Arbetsprocess",
+    "step_contact": "Första kontakt",
+    "step_contact_desc": "Vi bokar ett möte tillsammans.",
+    "step_consultation": "Inledande Konsultation",
+    "step_consultation_desc": "Vi diskuterar dina behov och visioner.",
+    "step_planning": "Planering",
+    "step_planning_desc": "Vi skapar en detaljerad plan och tidslinje.",
+    "step_design": "Design",
+    "step_design_desc": "Vi designar en prototyp för din feedback.",
+    "step_development": "Utveckling",
+    "step_development_desc": "Vi bygger webbplatsen baserat på designen.",
+    "step_testing": "Testning",
+    "step_testing_desc": "Vi testar webbplatsen noggrant.",
+    "step_launch": "Lansering",
+    "step_launch_desc": "Vi lanserar webbplatsen och ser till att allt fungerar.",
+    "step_maintenance": "Underhåll",
+    "step_maintenance_desc": "Vi erbjuder kontinuerligt stöd och underhåll.",
+    "why_choose_us": "Varför välja oss?",
+    "what_we_offer": "Vad vi erbjuder:",
+    "design_principles": "Våra designprinciper:",
+    "maintenance_includes": "Vad ingår:",
+    "professional_web_development": "Professionell Webbutveckling",
+    "custom_ecommerce_solutions": "Skräddarsydda E-handelslösningar",
+    "innovative_uiux_design": "Innovativt UI/UX Design",
+    "reliable_website_maintenance": "Pålitligt Webbplatsunderhåll"
 }

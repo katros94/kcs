@@ -49,5 +49,61 @@
     "placeholder_lastname": "Enter your last name",
     "placeholder_email": "Email address",
     "placeholder_subject": "Subject",
-    "placeholder_message": "Write your message"
+    "placeholder_message": "Write your message",
+    "service_title": "Create Your Dream Website with an Experienced Developer",
+    "web_dev_desc": "We create professional, modern, and custom websites to help your business grow online.",
+    "web_dev_details": [
+    "✅ Tailor-made solutions for your business",
+    "✅ SEO-optimized and high performance",
+    "✅ Mobile-friendly and easy to maintain"
+    ],
+    "service_intro": [
+    "Professional web services for your business?",
+    "Looking for a developer who can bring your vision to life and take your digital presence to the next level?",
+    "Whether you need a brand new website, a custom e-commerce solution, or a seamless user experience, I'm here to help."
+    ],
+    "services_we_offer":"Here are some of the services I offer:",
+    "ecommerce_desc": "We build powerful and user-friendly e-commerce solutions tailored to your needs.",
+    "ecommerce_details": [
+        "🛒 Custom online stores",
+        "🔒 Secure payment solutions",
+        "📈 SEO-optimized for better visibility"
+    ],
+    "uiux_desc": "A beautiful and user-friendly design is crucial for a positive experience.",
+    "uiux_details": [
+    "🎨 Attractive and modern design",
+    "🧭 Easy navigation",
+    "📊 Optimized for conversions"
+    ],
+    "maintenance_desc": "Having a website is just the beginning – it needs to be updated and secure.",
+    "maintenance_details": [
+        "🔄 Regular updates",
+        "📂 Backup and restoration",
+        "⚡ Optimization for faster load times"
+    ],
+    "workflow_title": "Our Workflow",
+    "step_contact": "First contact",
+    "step_contact_desc": "We schedule a meeting together.",
+    "step_consultation": "Initial Consultation",
+    "step_consultation_desc": "We discuss your needs and vision.",
+    "step_planning": "Planning",
+    "step_planning_desc": "We create a detailed plan and timeline.",
+    "step_design": "Design",
+    "step_design_desc": "We design a prototype for your feedback.",
+    "step_development": "Development",
+    "step_development_desc": "We build the website based on the approved design.",
+    "step_testing": "Testing",
+    "step_testing_desc": "We thoroughly test the website.",
+    "step_launch": "Launch",
+    "step_launch_desc": "We launch the website and ensure everything works.",
+    "step_maintenance": "Maintenance",
+    "step_maintenance_desc": "We provide ongoing support and maintenance.",
+    "why_choose_us": "Why Choose Us?",
+    "what_we_offer": "What We Offer:",
+    "design_principles": "Our Design Principles:",
+    "maintenance_includes": "What's Included:",
+    "professional_web_development": "Professional Web Development",
+    "custom_ecommerce_solutions": "Custom E-commerce Solutions",
+    "innovative_uiux_design": "Innovative UI/UX Design",
+    "reliable_website_maintenance": "Reliable Website Maintenance"
 }
