@@ -131,18 +131,20 @@
     flex-direction: column;
     align-items: stretch;
     flex-wrap: wrap;
-    overflow-x: scroll;
+}
+
+.el-tabs--top {
+  flex-direction: column-reverse !important;
 }
 
 .el-tabs__header {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  width: 100%;
 }
 
 .el-tabs__nav {
   display: flex;
-  overflow-x: auto;
 }
 
 .el-tabs__nav .el-tabs__item {
@@ -150,6 +152,7 @@
 }
 
 .el-tabs__content {
+  line-break: auto;
   width: 100%;
 }
 
@@ -245,7 +248,7 @@
 }
 
 .custom-tabs {
-  align-items: left;
+  width: 100%;
 }
 
 .service-intro p {
@@ -296,7 +299,6 @@
   padding: 2em !important;
   color: #000 !important;
   font-size: 1.5em !important;
-  margin-top: 0em;
   border-bottom: none !important;
 }
 
@@ -305,11 +307,12 @@
   background-color: #fff !important;
   color: #000 !important;
   text-align: left;
-  padding: 1.5em;
+  padding-left: 3em;
+  padding-right: 3em;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1em !important;
-  border-top: 5px solid #000 !important;
-  border-bottom: 5px solid #000 !important;
+  border-top: 3px solid #fff !important;
+  border-bottom: 3px solid #fff !important;
 }
 
 h1 {
@@ -331,15 +334,14 @@ h1 {
 @media (max-width: 768px) {
   .services {
     width: 100%;
-    margin-left: 0.5em;
+    margin-left: 1em;
   }
   .el-collapse-item__header {
     font-size: 1em !important;
   }
   .workflow {
-    width: 81%;
-    margin-left: 0.5em;
-    margin-top: 1em;
+    width: 85%;
+    margin-left: 1em;
   }
 
   .workflow h2 {
@@ -369,7 +371,6 @@ h1 {
   }
 
   .el-tabs {
-    overflow-x: auto;
     display: block;
   }
 
@@ -379,7 +380,6 @@ h1 {
   }
 
   .el-tabs__header {
-    overflow-x: auto;
     flex-direction: row;
   }
 
